@@ -5,20 +5,18 @@ import { IRootConfig } from './types';
 
 export default function initConfig() {
 
-  // this should be relative to local package, this script runs in /dist!
-  const defaultPath = join(__dirname, '../.gunrrc');
+  const defaultPath = join(CWD, '../.gunrrc');
 
   const defaultPathExists = existsSync(defaultPath);
 
-  const rootConfigPath = defaultPathExists ? defaultPath : join(__dirname, '../.gunrrc.json');
+  const rootConfigPath = defaultPathExists ? defaultPath : join(CWD, '../.gunrrc.json');
 
   const rootConfig = readConfig<IRootConfig>(rootConfigPath, true) || {} as IRootConfig;
 
   if (!rootConfig)
     throw new Error(`Could NOT find root configuration "${rootConfigPath}"`);
 
-  // keeping templates in this package so it has everything and can be called from anywhere
-  const templatesDir = join(__dirname, '../', rootConfig.templatesDir);
+  const templatesDir = join(CWD, '../', rootConfig.templatesDir);
 
   if (!existsSync(templatesDir))
     throw new Error(`Could NOT find templates directory "${templatesDir}"`);

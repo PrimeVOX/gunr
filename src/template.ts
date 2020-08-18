@@ -39,8 +39,8 @@ function initTemplates() {
         const val = assetsMap[k];
         if (!val)
           throw new Error(`Failed to resolve inline asset for key ${k}.`);
-        // configure already sets up full path.
-        return val;
+        // return absolute path.
+        return join(CWD, val);
       }) as string[];
 
     if (config.attachments)
@@ -48,8 +48,8 @@ function initTemplates() {
         const val = assetsMap[k];
         if (!val)
           throw new Error(`Failed to resolve attachment for key ${k}.`);
-        // configure already sets up full path.
-        return val;
+        // return absolute path.
+        return join(CWD, val);
       }) as string[];
 
     const { templatesDir, ...clean } = config;
