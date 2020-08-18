@@ -1,0 +1,22 @@
+{
+  "name": "gunr",
+  "version": "0.0.4",
+  "main": "dist/index.js",
+  "description": "Mailgun helper",
+  "repository": "https://github.com/primevox/gunr.git",
+  "author": "Blujedis <blujedicorp@gmail.com>",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "globby": "^11.0.1",
+    "handlebars": "^4.7.6",
+    "mailgun-js": "^0.22.0"
+  }
+}
