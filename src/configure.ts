@@ -5,18 +5,18 @@ import { IRootConfig } from './types';
 
 export default function initConfig() {
 
-  const defaultPath = join(CWD, '../.gunrrc');
+  const defaultPath = join(CWD, '.gunrrc');
 
   const defaultPathExists = existsSync(defaultPath);
 
-  const rootConfigPath = defaultPathExists ? defaultPath : join(CWD, '../.gunrrc.json');
+  const rootConfigPath = defaultPathExists ? defaultPath : join(CWD, '.gunrrc.json');
 
   const rootConfig = readConfig<IRootConfig>(rootConfigPath, true) || {} as IRootConfig;
 
   if (!rootConfig)
     throw new Error(`Could NOT find root configuration "${rootConfigPath}"`);
 
-  const templatesDir = join(CWD, '../', rootConfig.templatesDir);
+  const templatesDir = join(CWD, rootConfig.templatesDir);
 
   if (!existsSync(templatesDir))
     throw new Error(`Could NOT find templates directory "${templatesDir}"`);
