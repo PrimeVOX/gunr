@@ -4,15 +4,13 @@ const path_1 = require("path");
 const fs_1 = require("fs");
 const utils_1 = require("./utils");
 function initConfig() {
-    // this should be relative to local package, this script runs in /dist!
-    const defaultPath = path_1.join(__dirname, '../.gunrrc');
+    const defaultPath = path_1.join(utils_1.CWD, '../.gunrrc');
     const defaultPathExists = fs_1.existsSync(defaultPath);
-    const rootConfigPath = defaultPathExists ? defaultPath : path_1.join(__dirname, '../.gunrrc.json');
+    const rootConfigPath = defaultPathExists ? defaultPath : path_1.join(utils_1.CWD, '../.gunrrc.json');
     const rootConfig = utils_1.readConfig(rootConfigPath, true) || {};
     if (!rootConfig)
         throw new Error(`Could NOT find root configuration "${rootConfigPath}"`);
-    // keeping templates in this package so it has everything and can be called from anywhere
-    const templatesDir = path_1.join(__dirname, '../', rootConfig.templatesDir);
+    const templatesDir = path_1.join(utils_1.CWD, '../', rootConfig.templatesDir);
     if (!fs_1.existsSync(templatesDir))
         throw new Error(`Could NOT find templates directory "${templatesDir}"`);
     const templatesGlob = templatesDir + '/**/*';
