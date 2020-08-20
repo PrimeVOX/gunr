@@ -53,7 +53,7 @@ function initTemplates() {
                     if (!val)
                         throw new Error(`Failed to resolve inline asset for key ${k}.`);
                     // return absolute path.
-                    return path_1.join(CWD, val);
+                    return val;
                 });
             if (config.attachments)
                 attachments = config.attachments.map(k => {
@@ -61,7 +61,7 @@ function initTemplates() {
                     if (!val)
                         throw new Error(`Failed to resolve attachment for key ${k}.`);
                     // return absolute path.
-                    return path_1.join(CWD, val);
+                    return val;
                 });
             const { templatesDir } = config, clean = __rest(config, ["templatesDir"]);
             // Map to key value, properties may be in form of key object with nested "value" key.

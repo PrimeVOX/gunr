@@ -40,7 +40,7 @@ function initTemplates() {
         if (!val)
           throw new Error(`Failed to resolve inline asset for key ${k}.`);
         // return absolute path.
-        return join(CWD, val);
+        return val;
       }) as string[];
 
     if (config.attachments)
@@ -49,7 +49,7 @@ function initTemplates() {
         if (!val)
           throw new Error(`Failed to resolve attachment for key ${k}.`);
         // return absolute path.
-        return join(CWD, val);
+        return val;
       }) as string[];
 
     const { templatesDir, ...clean } = config;
